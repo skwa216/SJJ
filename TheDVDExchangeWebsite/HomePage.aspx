@@ -7,15 +7,21 @@
     <title></title>
 </head>
 <body>
-
-    <p>
-       Welcome to the DVD Exchange where you can make connections, trade movies, watch movies, and blog about your thoughts!
-    </p>
+   
     <form id="form1" runat="server">
-        <asp:Button runat="server" OnClick="" />
+           <asp:Button ID="SignUpPageButton" runat="server" Text="Sign Up!" OnClick="LoadSignUpPage"/>
+
+           
+            <!--       -->
+        
+        
     <div>
     
     </div>
     </form>
+
+     <p>
+       Welcome to the DVD Exchange where you can make connections, trade movies, watch movies, and blog about your thoughts!
+    </p>
 </body>
 </html>
