@@ -18,7 +18,7 @@
     <asp:TextBox id="EmailTextBox"  runat="server" />
         <br />
         <br />
-        <asp:Button id="CreateAccountButton" Text="Create" runat="server"/>
+        <asp:Button id="CreateAccountButton" Text="Create" OnClick="CreateAccount" runat="server"/>
     </div>
     </form>
 </body>

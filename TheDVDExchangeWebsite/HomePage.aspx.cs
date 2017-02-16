@@ -13,14 +13,14 @@ public partial class HomePage : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         dbConnection.Open();
-        string retString = "Select * from users";
-        SqlCommand getUsers = new SqlCommand(retString, dbConnection);
-        SqlDataReader printUsers = getUsers.ExecuteReader();
+        //string retString = "Select * from users";
+        // SqlCommand getUsers = new SqlCommand(retString, dbConnection);
+        // SqlDataReader printUsers = getUsers.ExecuteReader();
 
-     
 
+
+        Session["DatabaseConnection"] = dbConnection;
         dbConnection.Close();
-        
 
     }
 
