@@ -12,7 +12,6 @@ using System.Text.RegularExpressions;
 //Used to create a user and insert them into the database
 public partial class SignUpPage : System.Web.UI.Page
 {
-    public static string message = "nothing";
 
     public bool loggedIn;
 
@@ -31,10 +30,6 @@ public partial class SignUpPage : System.Web.UI.Page
     
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (message != "nothing")
-        {
-            Response.Write(message);
-        }
         loggedIn = (bool)Session["loginstatus"];
 
        
@@ -44,47 +39,19 @@ public partial class SignUpPage : System.Web.UI.Page
 
     public void CreateAccount(object sender, EventArgs e)
     {
-        Regex thePattern = new Regex(@"[\s]");
-        Regex theAlphanumeric = new Regex(@"[\w]");
-        Match theMatch;
 
+    
         //Sets the string variables to the TextBox values
         usernametext = usernameTextBox.Text;
-        theMatch = thePattern.Match(usernametext);
-        
+        Regex thePattern = new Regex(@"[\s]");
+        Match theMatch = thePattern.Match(usernametext);
         if (theMatch.Success)
         {
-            message = "Cannot have a space in your username!";
-            Response.Redirect("SignUpPage.aspx");
-        }
-        theMatch = theAlphanumeric.Match(usernametext);
-        if (!theMatch.Success)
-        {
-            message = "Cannot have special characters";
+            Response.Write("Space");
             Response.Redirect("SignUpPage.aspx");
         }
         passwordtext = passwordTextBox.Text;
-        theMatch = thePattern.Match(passwordtext);
-        if (theMatch.Success)
-        {
-            message = "Cannot have a space in your password!";
-            Response.Redirect("SignUpPage.aspx");
-        }
-        if (passwordtext.Length > 10)
-        {
-            message = "Password cannot be longer than 10 characters";
-            Response.Redirect("SignUpPage.aspx");
-        }
-
         emailtext = EmailTextBox.Text;
-        theMatch = thePattern.Match(emailtext);
-        if(theMatch.Success)
-        {
-            message = "Cannot have a space in your e-mail!";
-            Response.Redirect("SignUpPage.aspx");
-        }
-
-
         //Gets the count of the rows in the users table
         cmd.CommandText = "Select count(*) from users";
 
