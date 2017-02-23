@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 //2/23/2017
 //Jacob Homanics, Sam Kelsey, Jordyn DiSanzo
 //This class works in correlation with the SignUpPage.aspx webpage
@@ -38,8 +39,17 @@ public partial class SignUpPage : System.Web.UI.Page
 
     public void CreateAccount(object sender, EventArgs e)
     {
+
+    
         //Sets the string variables to the TextBox values
         usernametext = usernameTextBox.Text;
+        Regex thePattern = new Regex(@"[\s]");
+        Match theMatch = thePattern.Match(usernametext);
+        if (theMatch.Success)
+        {
+            Response.Write("Space");
+            Response.Redirect("SignUpPage.aspx");
+        }
         passwordtext = passwordTextBox.Text;
         emailtext = EmailTextBox.Text;
         //Gets the count of the rows in the users table
