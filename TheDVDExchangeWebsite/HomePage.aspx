@@ -10,6 +10,9 @@
    
     <form id="form1" runat="server">
            <asp:Button ID="SignUpPageButton" runat="server" Text="Sign Up!" OnClick="LoadSignUpPage"/>
+           <asp:Button ID="LoginPageButton" runat="server" Text="Login" OnClick="LoadSignUpPage"/>
+           <asp:Button ID="BrowsePageButton" runat="server" Text="Browse" OnClick="LoadBrowsePage"/>
+
 
            
             <!--       -->
