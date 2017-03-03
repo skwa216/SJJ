@@ -25,16 +25,19 @@ public partial class SignUpPage : System.Web.UI.Page
     public int count = 0;
 
     //Initializes SQL Commands and Connection
+    public SQLConnections skwal = new SQLConnections();
+
     public SqlCommand cmd = new SqlCommand();
     SqlConnection dbConnection = new SqlConnection();
     
     protected void Page_Load(object sender, EventArgs e)
     {
-        loggedIn = (bool)Session["loginstatus"];
+
+        skwal.openDatabase();
 
        
         //Sets the dbConnection to the dbConnection Session
-        dbConnection = (SqlConnection)Session["DatabaseConnection"];
+      //  dbConnection = (SqlConnection)Session["DatabaseConnection"];
     }
 
     public void CreateAccount(object sender, EventArgs e)
@@ -43,13 +46,9 @@ public partial class SignUpPage : System.Web.UI.Page
     
         //Sets the string variables to the TextBox values
         usernametext = usernameTextBox.Text;
-        Regex thePattern = new Regex(@"[\s]");
-        Match theMatch = thePattern.Match(usernametext);
-        if (theMatch.Success)
-        {
-            Response.Write("Space");
+       
             Response.Redirect("SignUpPage.aspx");
-        }
+       
         passwordtext = passwordTextBox.Text;
         emailtext = EmailTextBox.Text;
         //Gets the count of the rows in the users table
