@@ -10,20 +10,29 @@ using System.Data.SqlClient;
 //This class opens the database connection and stores into a session
 public partial class HomePage : System.Web.UI.Page
 {
-    public  string message = "nothing";
+    public ErrorMessage em = new ErrorMessage();
     //Initializes the dbConnection to the database
     static SqlConnection dbConnection = new SqlConnection("Data Source=stusql;Initial Catalog=TheDVDExchangeDatabase ;Integrated Security=true");
     //Initializes bool that is used to check if the user
+
+    public SQLConnections skwal = new SQLConnections();
+
     //is currently logged in
     public bool loggedIn = false;
     protected void Page_Load(object sender, EventArgs e)
     {
-        dbConnection.Close();
-        if (Session["message"] != null)
+        skwal.closeDatabase();
+
+        skwal.openDatabase();
+        
+        if (ErrorMessage.printMe)
         {
-            message = Session["message"].ToString();
-            Response.Write("<p>" + message + "</p>");
+            Response.Write(em.returnMessage());
+            ErrorMessage.printMe = false; 
         }
+
+        skwal.closeDatabase();
+       
 
 
 
@@ -36,24 +45,23 @@ public partial class HomePage : System.Web.UI.Page
 
         }
         //Opens database Connection
-        dbConnection.Open();
+    //    dbConnection.Open();
         //Sets the session to the dbConnection
-        Session["DatabaseConnection"] = dbConnection;
+     //   Session["DatabaseConnection"] = dbConnection;
         //Closes dbConnection
-        dbConnection.Close();
+     //   dbConnection.Close();
 
     }
-    //Protected function that redirects user to sign up page
     protected void LoadSignUpPage(object sender, EventArgs e)
     {
         if (loggedIn)
         {
-            Session["message"] = "You are currently logged in!";
+            ErrorMessage.message = "You are currently logged in!";
+            ErrorMessage.printMe = true;
             Response.Redirect("HomePage.aspx");
         }
         if (!loggedIn)
         {
-            //Redirects to SignUpPage.aspx
             Response.Redirect("SignUpPage.aspx");
         }
 
@@ -62,8 +70,8 @@ public partial class HomePage : System.Web.UI.Page
     {
         if (loggedIn)
         {
-            Session["message"] = "You are currently logged in!";
-
+            ErrorMessage.message = "You are currently logged in!";
+            ErrorMessage.printMe = true;
             Response.Redirect("HomePage.aspx");
         }
         if (!loggedIn)
@@ -82,11 +90,9 @@ public partial class HomePage : System.Web.UI.Page
         }
         if (!loggedIn)
         {
-            Session["message"] = "You are not currently logged in!";
-
-            //Redirects to BrowsePage.aspx
+            ErrorMessage.message = "Print Me!";
+            ErrorMessage.printMe = true;
             Response.Redirect("HomePage.aspx");
-
         }
     }
 }
