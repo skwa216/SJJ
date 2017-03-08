@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
     
-       
+      
 <head runat="server">
     <title></title>
     <style type="text/css">
@@ -30,7 +30,7 @@
           
     <div>
            <asp:Button ID="SignUpPageButton" runat="server" Text="Sign Up!" OnClick="LoadSignUpPage"/>
-           <asp:Button ID="LoginPageButton" runat="server" Text="Login" OnClick="LoadLoginPage"/>
+           <asp:Button ID="LoginPageButton" runat="server" Text="Login" OnClick="LoadSignUpPage"/>
            <asp:Button ID="BrowsePageButton" runat="server" Text="Browse" OnClick="LoadBrowsePage"/>
     </div>
 
@@ -40,9 +40,9 @@
      <h1 style="text-align:center">
        Welcome to the DVD Exchange where you can make connections, trade movies, watch movies, and blog about your thoughts! Check out this weeks featured movies!
     </h1>
-        <br />
-        <hr style="width:1690px; margin-left: 0px;" />
-        <br />
+        <br <hr style="width:1690px; margin-left: 0px;" />
+/>
+                <br />
          <h2 style="text-align:center">
                 Featured Horror Movies
          </h2>
@@ -145,8 +145,31 @@
         </div>
 
 </form>
-        
-    
+       
+    <hr style="width: 1688px" />
+      <h2 style="text-align:center">
+                Featured Comedy Movies
+         </h2>
+        <br />
+        <hr style="width:1690px; margin-left: 0px;" />
 
+     <div id="sixth" style="height: 220px; width: 280px">
+            <h3 style="text-align:left">
+             Get Hard (2015, R)
+         </h3>
+      
+             <img src ="gethard.jpg" style="width:142px;height:168px;" runat="server"/>
+
+            <asp:Button ID="Button6" runat="server" Text="Add to Cart" />
+
+         <div id="desc6" style="width:150px; height:132px;">
+                    <h4 >
+                        A woman goes into Japan's Suicide
+                         Forest to find her twin sister, 
+                        and confronts supernatural terror.
+                    </h4>
+                </div>
+  
+        </div>
      </body>
 </html>
