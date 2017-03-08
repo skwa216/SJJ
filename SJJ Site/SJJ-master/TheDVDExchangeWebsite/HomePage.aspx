@@ -30,7 +30,7 @@
           
     <div>
            <asp:Button ID="SignUpPageButton" runat="server" Text="Sign Up!" OnClick="LoadSignUpPage"/>
-           <asp:Button ID="LoginPageButton" runat="server" Text="Login" OnClick="LoadSignUpPage"/>
+           <asp:Button ID="LoginPageButton" runat="server" Text="Login" OnClick="LoadLoginPage"/>
            <asp:Button ID="BrowsePageButton" runat="server" Text="Browse" OnClick="LoadBrowsePage"/>
     </div>
 

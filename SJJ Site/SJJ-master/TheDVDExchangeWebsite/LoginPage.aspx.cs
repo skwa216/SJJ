@@ -10,7 +10,6 @@ public partial class LoginPage : System.Web.UI.Page
 {
     public ErrorMessage em = new ErrorMessage();
 
-   
 
 
     public SQLConnections skwal = new SQLConnections();
@@ -30,7 +29,7 @@ public partial class LoginPage : System.Web.UI.Page
        
 
     }
-
+  
 
 
     protected void Login(object sender, EventArgs e)
@@ -43,8 +42,10 @@ public partial class LoginPage : System.Web.UI.Page
 
        if ( skwal.executeLoginCheckCommand(usernameText,passwordText))
         {
+            SQLConnections.loggedIn = true;
             skwal.closeDatabase();
             Response.Redirect("HomePage.aspx");
+          
 
         }
        else
