@@ -14,7 +14,6 @@
         <br />
           <p>Password:</p>
     <asp:TextBox id="passwordTextBox" TextMode="Password"  runat="server" />
-           <p>Email:</p>
    
         <br />
         <br />

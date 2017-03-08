@@ -10,8 +10,12 @@ using System.Data.SqlClient;
 /// 
 namespace Project
 {
+
     public class SQLConnections
     {
+
+        public static bool loggedIn = false;
+
         static SqlConnection dbConnection = new SqlConnection("Data Source=stusql;Initial Catalog=TheDVDExchangeDatabase ;Integrated Security=true");
         public SqlCommand cmd = new SqlCommand();
         public SqlDataReader reader;
@@ -28,6 +32,15 @@ namespace Project
             dbConnection.Open();
 
         }
+
+
+        public bool returnIt()
+        {
+
+            return loggedIn;
+    }
+
+
 
         public void closeDatabase()
         {
@@ -51,6 +64,7 @@ namespace Project
                     ErrorMessage.message = "<p>You have been succesfully logged in!</p>";
                     ErrorMessage.printMe = true;
                     dbConnection.Close();
+
                     return true;
                 }
                 else

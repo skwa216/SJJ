@@ -55,13 +55,13 @@ public partial class HomePage : System.Web.UI.Page
     }
     protected void LoadSignUpPage(object sender, EventArgs e)
     {
-        if (loggedIn)
+        if (SQLConnections.loggedIn)
         {
             ErrorMessage.message = "You are currently logged in!";
             ErrorMessage.printMe = true;
             Response.Redirect("HomePage.aspx");
         }
-        if (!loggedIn)
+        if (!SQLConnections.loggedIn)
         {
             Response.Redirect("SignUpPage.aspx");
         }
@@ -69,13 +69,13 @@ public partial class HomePage : System.Web.UI.Page
     }
     protected void LoadLoginPage(object sender, EventArgs e)
     {
-        if (loggedIn)
+        if (SQLConnections.loggedIn)
         {
             ErrorMessage.message = "You are currently logged in!";
             ErrorMessage.printMe = true;
             Response.Redirect("HomePage.aspx");
         }
-        if (!loggedIn)
+        if (!SQLConnections.loggedIn)
         {
 
             Response.Redirect("LoginPage.aspx");
@@ -85,11 +85,11 @@ public partial class HomePage : System.Web.UI.Page
     }
     protected void LoadBrowsePage(object sender, EventArgs e)
     {
-        if (loggedIn)
+        if (SQLConnections.loggedIn)
         {
             Response.Redirect("BrowsePage.aspx");
         }
-        if (!loggedIn)
+        if (!SQLConnections.loggedIn)
         {
             ErrorMessage.message = "Print Me!";
             ErrorMessage.printMe = true;
